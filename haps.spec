@@ -1,11 +1,12 @@
 Summary:	Hardware Auto Probing System
 Summary(pl):	Hardware Auto Probing System - system wykrywania sprzêtu
 Name:		haps
-Version:	20030309
+Version:	20030224
 Release:	0.1
 License:	GPL
 Group:		Base
-Source0:	http://ggodlewski.host.sk/haps/%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
+# Source0-md5:	65a4042b66027cfe42d59e2bf9632dbc
 URL:		http://ggodlewski.host.sk/haps/
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
