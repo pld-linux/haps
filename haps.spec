@@ -1,15 +1,20 @@
 Summary:	Hardware Auto Probing System
+Summary(pl):	Hardware Auto Probing System - system wykrywania sprzêtu
 Name:		haps
 Version:	20030309
 Release:	0.1
 License:	GPL
 Group:		Base
 Source0:	http://ggodlewski.host.sk/haps/%{name}-%{version}.tar.gz
-URL:		http://ggodlewski.host.sk/haps
+URL:		http://ggodlewski.host.sk/haps/
+Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Hardware Auto Probing System
+Hardware Auto Probing System.
+
+%description -l pl
+Hardware Auto Probing System - system wykrywania sprzêtu.
 
 %prep
 %setup -q -n %{name}
@@ -20,9 +25,7 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/haps/current
-install -d $RPM_BUILD_ROOT/etc/haps/config
+install -d $RPM_BUILD_ROOT/etc/haps/{config,current}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
@@ -52,7 +55,10 @@ fi
 %attr(644,root,root) /lib/*
 %attr(754,root,root) /etc/rc.d/init.d/*
 #%attr(644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/*
+%dir /etc/haps
+#%dir /etc/haps/bus
 #%attr(644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/haps/bus/*
+%dir /etc/haps/filters
 %attr(644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/haps/filters/*
 %attr(755,root,root) /etc/haps/adddevice
 %attr(755,root,root) /etc/haps/removedevice
