@@ -26,9 +26,10 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/haps/{config,current}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/haps/{config,current}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -56,17 +57,17 @@ fi
 %attr(644,root,root) /lib/*
 %attr(754,root,root) /etc/rc.d/init.d/*
 #%attr(644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/*
-%dir /etc/haps
+%dir %{_sysconfdir}/haps
 #%dir /etc/haps/bus
 #%attr(644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/haps/bus/*
-%dir /etc/haps/filters
-%attr(644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/haps/filters/*
-%attr(755,root,root) /etc/haps/adddevice
-%attr(755,root,root) /etc/haps/removedevice
-%attr(755,root,root) /etc/haps/cut_haps
-%attr(755,root,root) /etc/haps/makeconfig
-/etc/haps/config
-/etc/haps/current
-/etc/haps/templates
-%attr(644,root,root) /etc/haps/bioses
-%attr(644,root,root) /etc/haps/pcitable
+%dir %{_sysconfdir}/haps/filters
+%attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/haps/filters/*
+%attr(755,root,root) %{_sysconfdir}/haps/adddevice
+%attr(755,root,root) %{_sysconfdir}/haps/removedevice
+%attr(755,root,root) %{_sysconfdir}/haps/cut_haps
+%attr(755,root,root) %{_sysconfdir}/haps/makeconfig
+%{_sysconfdir}/haps/config
+%{_sysconfdir}/haps/current
+%{_sysconfdir}/haps/templates
+%attr(644,root,root) %{_sysconfdir}/haps/bioses
+%attr(644,root,root) %{_sysconfdir}/haps/pcitable
