@@ -21,7 +21,6 @@ Hardware Auto Probing System - system wykrywania sprzêtu.
 %setup -q -n %{name}
 
 %build
-rm -f missing
 %{__make}
 
 %install
@@ -52,16 +51,17 @@ fi
 
 %files
 %defattr(644,root,root,755)
-#%doc ChangeLog README
+%doc AUTHORS README TODO ChangeLog README
 %attr(755,root,root) /sbin/*
-%attr(644,root,root) /lib/*
+%dir /lib/haps
+%attr(755,root,root) /lib/haps/*.so
 %attr(754,root,root) /etc/rc.d/init.d/*
-#%attr(644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/*
+#%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/*
 %dir %{_sysconfdir}/haps
 #%dir /etc/haps/bus
-#%attr(644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/haps/bus/*
+#%config(noreplace) %verify(not md5 mtime size) /etc/haps/bus/*
 %dir %{_sysconfdir}/haps/filters
-%attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/haps/filters/*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/haps/filters/*
 %attr(755,root,root) %{_sysconfdir}/haps/adddevice
 %attr(755,root,root) %{_sysconfdir}/haps/removedevice
 %attr(755,root,root) %{_sysconfdir}/haps/cut_haps
@@ -69,5 +69,5 @@ fi
 %{_sysconfdir}/haps/config
 %{_sysconfdir}/haps/current
 %{_sysconfdir}/haps/templates
-%attr(644,root,root) %{_sysconfdir}/haps/bioses
-%attr(644,root,root) %{_sysconfdir}/haps/pcitable
+%{_sysconfdir}/haps/bioses
+%{_sysconfdir}/haps/pcitable
