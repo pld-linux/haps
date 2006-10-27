@@ -35,17 +35,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add haps
-if [ -f /var/lock/subsys/haps ]; then
-	/etc/rc.d/init.d/haps restart >&2
-else
-	echo "Run \"/etc/rc.d/init.d/haps start\" to start haps." >&2
-fi
+%service haps restart
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/haps ]; then
-		/etc/rc.d/init.d/haps stop >&2
-	fi
+	%service haps stop
 	/sbin/chkconfig --del haps
 fi
 
