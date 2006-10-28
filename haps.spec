@@ -8,7 +8,9 @@ Group:		Base
 Source0:	%{name}-%{version}.tar.gz
 # Source0-md5:	65a4042b66027cfe42d59e2bf9632dbc
 URL:		http://ggodlewski.host.sk/haps/
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -52,8 +54,8 @@ fi
 %attr(754,root,root) /etc/rc.d/init.d/*
 #%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/*
 %dir %{_sysconfdir}/haps
-#%dir /etc/haps/bus
-#%config(noreplace) %verify(not md5 mtime size) /etc/haps/bus/*
+#%dir %{_sysconfdir}/haps/bus
+#%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/haps/bus/*
 %dir %{_sysconfdir}/haps/filters
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/haps/filters/*
 %attr(755,root,root) %{_sysconfdir}/haps/adddevice
