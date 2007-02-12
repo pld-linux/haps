@@ -1,5 +1,5 @@
 Summary:	Hardware Auto Probing System
-Summary(pl):	Hardware Auto Probing System - system wykrywania sprzêtu
+Summary(pl.UTF-8):   Hardware Auto Probing System - system wykrywania sprzÄ™tu
 Name:		haps
 Version:	20030224
 Release:	0.1
@@ -16,8 +16,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Hardware Auto Probing System.
 
-%description -l pl
-Hardware Auto Probing System - system wykrywania sprzêtu.
+%description -l pl.UTF-8
+Hardware Auto Probing System - system wykrywania sprzÄ™tu.
 
 %prep
 %setup -q -n %{name}
