@@ -1,5 +1,5 @@
 Summary:	Hardware Auto Probing System
-Summary(pl.UTF-8):   Hardware Auto Probing System - system wykrywania sprzętu
+Summary(pl.UTF-8):	Hardware Auto Probing System - system wykrywania sprzętu
 Name:		haps
 Version:	20030224
 Release:	0.1
