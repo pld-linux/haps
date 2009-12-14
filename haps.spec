@@ -47,7 +47,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README TODO ChangeLog README
+%doc AUTHORS README TODO ChangeLog
 %attr(755,root,root) /sbin/*
 %dir /lib/haps
 %attr(755,root,root) /lib/haps/*.so
